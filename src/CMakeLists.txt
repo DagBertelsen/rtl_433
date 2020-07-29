@@ -48,6 +48,7 @@ add_library(r_433 STATIC
     devices/cardin.c
     devices/chuango.c
     devices/companion_wtr001.c
+    devices/cotech_36_7959.c
     devices/current_cost.c
     devices/danfoss.c
     devices/digitech_xc0324.c
@@ -88,9 +89,11 @@ add_library(r_433 STATIC
     devices/honeywell_wdb.c
     devices/ht680.c
     devices/ibis_beacon.c
+    devices/idm.c
     devices/ikea_sparsnas.c
     devices/infactory.c
     devices/inovalley-kw9015b.c
+    devices/insteon.c
     devices/interlogix.c
     devices/intertechno.c
     devices/kedsum.c
@@ -106,6 +109,7 @@ add_library(r_433 STATIC
     devices/maverick_et73.c
     devices/maverick_et73x.c
     devices/mebus.c
+    devices/missil_ml0757.c
     devices/new_template.c
     devices/newkaku.c
     devices/nexa.c
@@ -128,6 +132,8 @@ add_library(r_433 STATIC
     devices/rubicson_48659.c
     devices/s3318p.c
     devices/schraeder.c
+    devices/scmplus.c
+    devices/sharp_spc775.c
     devices/silvercrest.c
     devices/simplisafe.c
     devices/smoke_gs558.c
@@ -140,6 +146,7 @@ add_library(r_433 STATIC
     devices/tfa_twin_plus_30.3049.c
     devices/thermopro_tp11.c
     devices/thermopro_tp12.c
+    devices/tpms_abarth124.c
     devices/tpms_citroen.c
     devices/tpms_elantra2012.c
     devices/tpms_ford.c

@@ -54,13 +54,23 @@ static int eurochron_efth800_decode(r_device *decoder, bitbuffer_t *bitbuffer)
         return DECODE_ABORT_LENGTH;
 
     b = bitbuffer->bb[row];
+
+    // This is actially a 0x00 packet error ( bitbuffer_invert )
+    // No need to decode/extract values for simple test
+    if ( b[0] == 0xff &&  b[1] == 0xff && b[2] == 0xFF && b[4] == 0xFF )  {
+        if (decoder->verbose > 1) {
+            fprintf(stderr, "%s: DECODE_FAIL_SANITY data all 0xff\n", __func__);
+        }
+        return DECODE_FAIL_SANITY;
+    }
+
     bitbuffer_invert(bitbuffer);
 
     if (crc8(b, 6, 0x31, 0x00))
         return DECODE_FAIL_MIC; // crc mismatch
 
     /* Extract data */
-    channel     = (b[0] & 0x30) >> 4;
+    channel     = (b[0] & 0x70) >> 4;
     id          = ((b[0] & 0x0f) << 8) | b[1];
     battery_low = b[2] >> 7;
     temp_raw    = (int16_t)((b[2] & 0x3f) << 10) | ((b[3] & 0xf0) << 2); // sign-extend
